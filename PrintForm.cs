@@ -314,7 +314,7 @@ namespace Yb.StmsWeight.App
             StringBuilder sql = new StringBuilder("select ");
             ReadIni readini = new ReadIni();
             //String[] strs = new string[] { "磅单抬头",  "序号", "时间", "编号", "供货单位", "车号", "品名", "等级", "方量",  "毛重", "皮重", "净重", "计量员", "质检员", "司机", "备注", "扣杂" };
-            String[] strs = new string[] { "时间", "编号", "供货单位", "车号", "品名", "等级", "方量", "毛重", "皮重", "净重", "计量员", "质检员", "司机", "备注", "扣杂", "收货单位","站名" };
+            String[] strs = new string[] { "时间", "编号", "供货单位", "车号", "品名", "等级", "方量", "毛重", "皮重", "净重", "计量员", "质检员", "司机", "备注", "扣杂", "收货单位", "站名" };
             foreach (String str in strs)
             {
                 this.appendSql(sql, readini.ReadIniData(Configure, str, null, "" + inifile + ""));
@@ -375,13 +375,16 @@ namespace Yb.StmsWeight.App
                     String dataTypeNam2 = reader.GetDataTypeName(14);
                     if (dataTypeNam == "DBTYPE_R8")
                     {
-                        try {
+                        try
+                        {
                             order.DeductWeight = Convert.ToDecimal(reader.GetDouble(14)); //扣杂
-                        } catch(Exception) {
+                        }
+                        catch (Exception)
+                        {
                         }
 
-                           
-                      
+
+
                     }
                     else if (dataTypeNam == "DBTYPE _ WSTR")
                     {
